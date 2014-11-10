@@ -1,0 +1,22 @@
+body{border-top:none;font-family:sans-serif;padding-bottom:5px;}
+#header img{max-height:1.5cm;max-width:none;}
+#header{overflow:hidden;}
+#sidebar ul li{float:none;}
+#sidebar ul li a{height:1.5em;border:1px solid #ccc;line-height:1.5em;width:auto;margin:1px 0;}
+#bodyText{float:none;width:auto;max-width:597px;padding:2%;}
+#bodyText ol,#bodyText ul{padding-left:1%;margin-left:1%;}
+#bodyText li{line-height:1.4;margin-bottom:0.83em;margin-left:1%;padding:0 0.4em 0 0;}
+#bodyText ul ul li{margin-top:0.83em;}
+#sidebar{height:auto;margin:0;padding:2%;}
+#footer{padding:0.5em 0.7em 0.7em;}
+#footer p{margin:1em 0;}
+#footer ul{margin:1em 0 0;}
+#footer li{padding:0 1.5em 0 0;}
+code,pre{font-family:monospace;}
+h1,h2,h3,h4,h5,h6{line-height:1em;margin-top:1.3em;}
+#sidebar h2{font-size:1.23em;margin:0.3em 0 0;}
+h3{font-size:1.23em;}
+#sidebar h4{margin:0 0 1.2em;}
+input,textarea,select{max-width:100%;}
+form label{font-size:0.9em;margin-top:0.4em;}
+#sidebar h3,h4{font-size:1em;}
