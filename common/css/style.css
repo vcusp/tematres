@@ -38,7 +38,7 @@ html{font-size:62.5%;}
 .enlacefoo ul{display:inline;}
 a{color:#d85d5d;text-decoration:none;}
 a:hover{color:#505050;text-decoration:underline;}
-body{font-size:small;width:780px;border-left:1px solid #757575;border-right:1px solid #757575;font-family:Arial, Helvetica, sans-serif;margin:0 auto;}
+/* body{font-size:small;width:780px;border-left:1px solid #757575;border-right:1px solid #757575;font-family:Arial, Helvetica, sans-serif;margin:0 auto;} */
 h1{margin-bottom:5px;padding-bottom:0;}
 h2{color:#fff;font-size:120%;font-family:Arial, Helvetica, sans-serif;padding:5px 5px 5px 10px;}
 .TT{color:#000;font-size:120%;background-repeat:no-repeat;background-position:0 60%;font-family:Arial, Helvetica, sans-serif;clear:both;padding:0 0.2em 0 1em;}
@@ -399,4 +399,131 @@ h1.metaTerm:after,a.metaTerm:after{content:'>'}
     text-align: left;
 
     margin-top: 4px;
+}
+
+/* Barra USP */
+
+.uspmenu_top_usp {
+	list-style:none;
+	margin:0;
+	padding:0;
+	width:21em
+}
+.uspmenu_top_tit {
+	text-align:left;
+	font-weight:bold;
+	color:#000
+}
+.uspmenu_top_usp li {
+	margin:0px;
+	padding:0px;
+	text-align:left;
+	display: inline;
+}
+.uspmenu_top_usp a {
+	background:url(http://www.producao.usp.br/a/barrausp/images/hover1.gif) left center no-repeat;
+	border-bottom:1px solid #cb911c;
+	color:#000;
+	display:block;
+	margin:0px;
+	padding:5px 12px;
+	_padding:5px 12px 5px;
+	text-decoration:none;
+	font-weight:normal;
+	text-align:left;
+}
+.uspmenu_top_usp a:hover {
+	background:#64c5d2 url(http://www.producao.usp.br/a/barrausp/images/hover_novo.gif) left center no-repeat;
+	color:#000;
+	padding-bottom:5px;
+	_padding:5px 12px 5px;
+}
+.uspLogo{
+        position:absolute;
+	top:0px;
+	left:0px;
+	width:100%;
+	height:37px;
+	text-align:left;
+	background:url(http://www.producao.usp.br/a/barrausp/images/right_Logo_usp_BG.gif) repeat-x 0 0;
+}
+
+.usppanel {
+    background: -webkit-linear-gradient(#fff, #feb524); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#fff, #feb524); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#fff, #feb524); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#fff, #feb524); /* Standard syntax */
+    font-size: 12px;
+}
+div.usptab{
+background-color:transparent;
+border-style:none;
+}
+.usptab {
+border-style:none;
+	background:url(http://www.producao.usp.br/a/barrausp/images/tab_b.png) repeat-x 0 0;
+	height:22px;
+	z-index:0;
+}
+.usptab ul.usplogin {
+	display:block;
+	position:relative;
+	float:right;
+	clear:right;
+	height:22px;
+	width:auto;
+	font-weight:bold;
+	line-height:22px;
+	margin:0;
+	right:100px;
+	color:#fff;
+	font-size:80%;
+	text-align:center;
+	border-style:none;
+	background-color:transparent;
+}
+.usptab ul.usplogin li.uspleft {
+	background:url(http://www.producao.usp.br/a/barrausp/images/tab_l.png) no-repeat left 0;
+	height:22px;
+	width:30px;
+	padding:0;
+	margin:0;
+	display:block;
+	float:left
+}
+.usptab ul.usplogin li.uspright {
+	background:url(http://www.producao.usp.br/a/barrausp/images/tab_r.png) no-repeat left 0;
+	height:22px;
+	width:30px;
+	padding:0;
+	margin:0;
+	display:block;
+	float:left
+}
+.usptab ul.usplogin li {
+	text-align:left;
+	padding:0 0px;
+	display:block;
+	float:left;
+	height:22px;
+	background:url(http://www.producao.usp.br/a/barrausp/images/tab_m.png) repeat-x 0 0
+}
+.usptab ul.usplogin li a {
+	color:#15ADFF
+}
+.usptab ul.usplogin li a:hover {
+	color:#fff
+}
+.usptab .uspsep {
+	color:#414141
+}
+.usptab a.uspopen, .usptab a.uspclose {
+	padding-right:0px;
+	line-height:0px !important;
+	padding-left:10px !important;
+	cursor:pointer;
+	display:block;
+	width:70px;
+	position:relative;
+
 }
