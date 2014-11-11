@@ -943,7 +943,7 @@ if((CFG_SIMPLE_WEB_SERVICE !== "1") || (!$task)){
 
 	$arrayResume['version'] = $CFG["Version"];		
 
-	$arrayResume["cant_result"] = count($response["result"]);
+	//$arrayResume["cant_result"] = count($response["result"]);
 
 	$response["resume"] = $arrayResume;
 
@@ -1124,6 +1124,7 @@ if ($beginning) {
 	$output .= '<'.'?'.'xml version="1.0" encoding="'.$encode.'"'.'?'.'>';
 	
 	$output .= '<' . $name . '>';
+	$output .= '<cant_result>' . count($array["result"]) . '</cant_result>';
 	$nested = 0;
 }
 	foreach ($array as $root=>$child) {
