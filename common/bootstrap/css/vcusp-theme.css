@@ -5860,6 +5860,10 @@ padding-right:0px;
 
 /* Barra USP */
 
+#uspbarra {
+	padding-top:37px;
+}
+
 .uspmenu_top_usp {
 	list-style:none;
 	margin:0;

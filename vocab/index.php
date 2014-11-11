@@ -189,28 +189,39 @@ $search_string = (doValue($_GET,FORM_LABEL_buscar)) ? XSSprevent(doValue($_GET,F
 
 <div class="container">
 	<div class="row">
-	<div class="col-xs-12 col-md-12">
+	<div class="col-md-8">
+		<div class="logo">
+			<a href="<%= siteURL%>"><img class="img-responsive" src="<%= siteURL%>/image/producao.usp.png"></a>
+			<h1><a href="index.php" title="<?php echo $_SESSION[CFGTitulo].': '.MENU_ListaSis;?> "><?php echo $_SESSION[CFGTitulo];?></a></h1>
+		</div>
+	</div>
+	<div class="col-md-4">
+		<address>
+		<strong>Departamento Técnico do Sistema Integrado de Bibliotecas da USP</strong><br>
+			Rua da Biblioteca, S/N - Complexo Brasiliana<br>
+			05508-050 - Cidade Universitária, São Paulo, SP - Brasil<br>
+			<abbr title="Phone">Tel:</abbr> (0xx11) 3091-1539 e 3091-1566<br>
+			<strong>E-mail:</strong> <a href="mailto:#">atendimento@sibi.usp.br</a>
+		</address>
+	</div>
+</div>
 	
 	<div id="arriba"></div>
-			<div id="hd">
-			  <div id="search-container" class="floatRight">
-			<form method="get" id="simple-search" name="simple-search" action="index.php" onsubmit="return checkrequired(this)">		  		  
-			<input type="text" id="query" name="<?php echo FORM_LABEL_buscar;?>" size="20" value=""/>
-			<input class="enlace" type="submit" value="<?php echo LABEL_Buscar ?>" />
-			</form>
-		  </div>
-
-				<!-- id portal_navigation_bar used to denote the top links -->
-				<div class="hd" id="portal_navigation_bar">
-			
-				
-				<!-- browse_navigation used to denote the top portal navigation links -->
-					 <ul id="browse_navigation" class="inline_controls">
-					 <li class="first"><a title="<?php echo MENU_Inicio;?>" href="index.php"><?php echo MENU_Inicio;?></a></li>
-				<?php
-				//hay sesion de usuario
-				if($_SESSION[$_SESSION["CFGURL"]][ssuser_nivel]){
-					echo HTMLmainMenu();
+			<header class="navbar navbar-inverse" role="navigation">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+				</div>
+					<nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation" >
+						<ul class="nav navbar-nav" >
+							<li class="active"><a title="<?php echo MENU_Inicio;?>" href="index.php"><span class="glyphicon glyphicon-home"></span> <?php echo MENU_Inicio;?></a></li>
+							<?php
+								//hay sesion de usuario
+								if($_SESSION[$_SESSION["CFGURL"]][ssuser_nivel]){
+								echo HTMLmainMenu();
 				//no hay session de usuario
 				}else{
 				?>
@@ -218,19 +229,24 @@ $search_string = (doValue($_GET,FORM_LABEL_buscar)) ? XSSprevent(doValue($_GET,F
 
 				<?php
 				};
-				?>				
-	
-				<li><a title="<?php echo MENU_Sobre;?>" href="sobre.php"><?php echo MENU_Sobre;?></a></li>
-				<li><a title="<?php echo LABEL_busqueda;?>" href="index.php?xsearch=1"><?php echo ucfirst(LABEL_BusquedaAvanzada);?></a></li>
-					</ul>
-				</div>
-			</div>	
+				?>
+						</ul>
+						<ul class="nav navbar-nav navbar-right">
+							<li><a title="<?php echo LABEL_busqueda;?>" href="index.php?xsearch=1"><?php echo ucfirst(LABEL_BusquedaAvanzada);?></a></li>
+							<li><a title="<?php echo MENU_Sobre;?>" href="sobre.php"><?php echo MENU_Sobre;?></a></li>
+						</ul>
+						<!-- Search Box -->
+							<form method="get" id="simple-search" name="simple-search" action="index.php" class="navbar-form navbar-right" onsubmit="return checkrequired(this)">
+							<div class="form-group">
+								<input type="text" id="query" class="form-control" name="<?php echo FORM_LABEL_buscar;?>" size="25" value=""/>
+							</div>
+							<button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search"></span></button>
+							</form>
+					</nav>
+			</header>
+			
+			
 <!-- body, or middle section of our header -->   
-
-    <!-- ###### Header ###### -->
-    <div id="header">
-      <h1><a href="index.php" title="<?php echo $_SESSION[CFGTitulo].': '.MENU_ListaSis;?> "><?php echo $_SESSION[CFGTitulo];?></a></h1>
-	</div>	
 
 <!-- ###### Body Text ###### -->
 <?php
