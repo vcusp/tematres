@@ -31,12 +31,12 @@ $search_string = (doValue($_GET,FORM_LABEL_buscar)) ? XSSprevent(doValue($_GET,F
 
 	<script type="text/javascript" src="<?php echo T3_WEBPATH;?>jq/lib/jquery-1.11.1.min.js"></script>
 	<script type="text/javascript" src="<?php echo T3_WEBPATH;?>jq/jquery.autocomplete.js"></script>    
-	<script type="text/javascript" src="<?php echo T3_WEBPATH;?>jq/jquery.mockjax.js"></script>   
-	<script type="text/javascript" src="<?php echo T3_WEBPATH;?>jq/tree.jquery.js"></script>   
+	<script type="text/javascript" src="<?php echo T3_WEBPATH;?>jq/jquery.mockjax.js"></script>
+	<script type="text/javascript" src="<?php echo T3_WEBPATH;?>jq/tree.jquery.js"></script> 
 	
 	<link rel="stylesheet" type="text/css" href="<?php echo T3_WEBPATH;?>css/jquery.autocomplete.css" />
 	<link rel="stylesheet" type="text/css" href="<?php echo T3_WEBPATH;?>css/jqtree.css" />
-
+        
 	<!-- Bootstrap CSS -->
 	<link rel="stylesheet" href="<?php echo T3_WEBPATH;?>bootstrap/css/vcusp-theme.css">
 
@@ -226,9 +226,9 @@ $search_string = (doValue($_GET,FORM_LABEL_buscar)) ? XSSprevent(doValue($_GET,F
 				?>
 					 <li>
                                             <!-- Button trigger modal -->
-                                            <a type="button" data-toggle="modal" data-target="#myModal"><?php echo MENU_MiCuenta;?></a>
+                                            <a type="button" data-toggle="modal" data-target="#login"><?php echo MENU_MiCuenta;?></a>
                                             <!-- Modal -->
-                                            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                            <div class="modal" id="login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                               <div class="modal-dialog">
                                                 <div class="modal-content">
                                                   <div class="modal-header">
@@ -270,8 +270,7 @@ $search_string = (doValue($_GET,FORM_LABEL_buscar)) ? XSSprevent(doValue($_GET,F
                                                                ?>
                                                   </div>
                                                   <div class="modal-footer">
-                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
-                                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>                                                    
                                                   </div>
                                                 </div>
                                               </div>
@@ -281,7 +280,7 @@ $search_string = (doValue($_GET,FORM_LABEL_buscar)) ? XSSprevent(doValue($_GET,F
 				?>
 						</ul>
 						<ul class="nav navbar-nav navbar-right">
-							<li><?php echo doMenuLang($metadata["arraydata"]["tema_id"]); ?></li>
+                                                    <li><?php echo doMenuLang($metadata["arraydata"]["tema_id"]); ?></li>
                                                         <li><a title="<?php echo LABEL_busqueda;?>" href="index.php?xsearch=1"><?php echo ucfirst(LABEL_BusquedaAvanzada);?></a></li>
 							<li><a title="<?php echo MENU_Sobre;?>" href="sobre.php"><?php echo MENU_Sobre;?></a></li>
 						</ul>
@@ -307,49 +306,25 @@ $search_string = (doValue($_GET,FORM_LABEL_buscar)) ? XSSprevent(doValue($_GET,F
 <p></p>
 <!-- ###### Footer ###### -->
 
-    <div id="footer">   
-		<div id="subsidiary">  <!-- NB: outer <div> required for correct rendering in IE -->
-			<div id="first">
-				<?php    
-				 if(!$_GET[letra]) 
-				 {
-					 echo HTMLlistaAlfabeticaUnica();
-				 }
-				 ?>				
- 		    </div>  		  
-   		    
-   		    <div id="second">
-				<div>				
-					<div class="clearer"></div>
-					<strong><?php echo LABEL_URI ?>: </strong><span class="footerCol2"><a href="<?php echo $_SESSION["CFGURL"];?>"><?php echo $_SESSION["CFGURL"];?></a></span>
-					<div class="clearer"></div>
-					<?php
-					//are enable SPARQL
-					if(CFG_ENABLE_SPARQL==1)
-					{
-						echo '<strong><a href="'.$_SESSION["CFGURL"].'sparql.php" title="'.LABEL_SPARQLEndpoint.'">'.LABEL_SPARQLEndpoint.'</a></strong>';
-						echo '<div class="clearer"></div>';
-
-					}
-				
-					if(CFG_SIMPLE_WEB_SERVICE==1)
-					{
-						echo '<a href="'.$_SESSION["CFGURL"].'services.php" title="API">API</a>';
-						echo '<div class="clearer"></div>';
-
-					}
-					?>
-					<strong><?php echo LABEL_Autor ?>: </strong><span class="footerCol2"><?php echo $_SESSION["CFGAutor"];?></span>
-					<div class="clearer"></div>
-					
-				</div>			
-					
-		    </div>
+    <div class="footer">
+        <div class="container">
+            <p>Desenvolvido com Tematres 1.81</p>                
+            <p><?php echo LABEL_URI ?>: <span class="footerCol2"><a href="<?php echo $_SESSION["CFGURL"];?>"><?php echo $_SESSION["CFGURL"];?></a></span></p>
+				<?php
+				//are enable SPARQL
+				if(CFG_ENABLE_SPARQL==1)
+				{
+					echo '<p><strong><a href="'.$_SESSION["CFGURL"].'sparql.php" title="'.LABEL_SPARQLEndpoint.'">'.LABEL_SPARQLEndpoint.'</a></strong></p>';
+				}
+                                
+				if(CFG_SIMPLE_WEB_SERVICE==1)
+				{
+					echo '<p><a href="'.$_SESSION["CFGURL"].'services.php" title="API">API do WebService</a></p>';	
+				}
+				?>
+			
+    </div>
     </div>
   </div>
-  </div>
-</div>
-</div>
-
  </body>
 </html>

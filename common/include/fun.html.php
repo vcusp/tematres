@@ -1233,11 +1233,8 @@ GLOBAL $CFG;
 $_TOP_TERMS_BROWSER=(in_array($CFG["_TOP_TERMS_BROWSER"], array(1,0))) ? $CFG["_TOP_TERMS_BROWSER"] : 0;
 
 $rows.='<div id="bodyText">';
-
-$rows.=HTMLlistaAlfabeticaUnica($letra);
-
-$rows.='<div class="clearer-top"></div>';
-
+$rows.='<div class="row">';
+$rows.='<div class="col-md-8">';
 
 if($_TOP_TERMS_BROWSER==1)
 {
@@ -1273,8 +1270,16 @@ else{
 
 
 }
-
 $rows.='</div>';
+$rows.='<div class="col-md-4">';
+$rows.='<div class="panel panel-default">';
+$rows.='<div class="panel-heading">Navegar por ordem alfabética</div>';
+$rows.='<div class="panel-body">';
+$rows.=HTMLlistaAlfabeticaUnica($letra);
+$rows.='</div></div></div>';
+
+
+$rows.='</div></div>';
 
 return $rows;
 }
