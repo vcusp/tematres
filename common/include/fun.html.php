@@ -1300,11 +1300,11 @@ if(SQLcount($sqlMenuAlfabetico)>0)
 			if(!ctype_digit($datosAlfabetico[0]))
 			{
 			$classMenu = ($datosAlfabetico[1]==0)  ? '' : ' class="selected" ';
-			$menuAlfabetico.='<a '.$classMenu.' title="'.LABEL_verTerminosLetra.' '.$datosAlfabetico[0].'" href="'.$PHP_SELF.'?letra='.$datosAlfabetico[0].'">'.$datosAlfabetico[0].'</a>';        
+			$menuAlfabetico.='<span class="badge"><a '.$classMenu.' title="'.LABEL_verTerminosLetra.' '.$datosAlfabetico[0].'" href="'.$PHP_SELF.'?letra='.$datosAlfabetico[0].'">'.$datosAlfabetico[0].'</a></span>';        
 			}
 			else
 			{
-			$menuNoAlfabetico='<a class="buttonLarge" title="'.LABEL_verTerminosLetra.' '.$datosAlfabetico[0].'" href="'.$PHP_SELF.'?letra='.$datosAlfabetico[0].'">0-9</a>';        
+			$menuNoAlfabetico='<span class="badge"><a title="'.LABEL_verTerminosLetra.' '.$datosAlfabetico[0].'" href="'.$PHP_SELF.'?letra='.$datosAlfabetico[0].'">0-9</a></span>';        
 			}
 
 		}
@@ -1312,7 +1312,7 @@ if(SQLcount($sqlMenuAlfabetico)>0)
 	};//fin del while
 }
 
-$menuAlfabetico='<div class="glossary">'.$menuNoAlfabetico.$menuAlfabetico.'</div>';
+$menuAlfabetico='<div>'.$menuNoAlfabetico.$menuAlfabetico.'</div>';
 
 return $menuAlfabetico;
 };

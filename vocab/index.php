@@ -224,14 +224,65 @@ $search_string = (doValue($_GET,FORM_LABEL_buscar)) ? XSSprevent(doValue($_GET,F
 				//no hay session de usuario
 				}else{
 				?>
-					 <li><a href="login.php" title="<?php echo MENU_MiCuenta;?>"><?php echo MENU_MiCuenta;?></a></li>
+					 <li>
+                                            <!-- Button trigger modal -->
+                                            <a type="button" data-toggle="modal" data-target="#myModal"><?php echo MENU_MiCuenta;?></a>
+                                            <!-- Modal -->
+                                            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                              <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                  <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                                    <h4 class="modal-title" id="myModalLabel">Login</h4>
+                                                  </div>
+                                                  <div class="modal-body">
+                                                    	          <?php
+                                                                if($_SESSION[$_SESSION["CFGURL"]]["ssuser_id"]){
+                                                                require_once(T3_ABSPATH . 'common/include/inc.misTerminos.php');
+                                                                }else{
+                                                            ?>
+                                                         <div id="bodyText">
+                                                        <?php
+                                                            if($_POST["task"]=='user_recovery')
+                                                            {
+                                                                    $task_result=recovery($_POST["id_correo_electronico_recovery"]);		
+                                                            }
 
+
+                                                            if ($_GET["task"]=='recovery') 
+                                                            {
+                                                                    echo HTMLformRecoveryPassword();	
+                                                            }
+                                                            else 
+                                                            {
+
+                                                                    if(($_POST["task"]=='login') && (!$_SESSION[$_SESSION["CFGURL"]]["ssuser_id"])) 
+                                                                    {
+                                                                            $task_result=array("msg"=>t3_messages('no_user'));			
+                                                                    }					
+                                                                    echo HTMLformLogin($task_result);		
+                                                            };
+
+                                                            ?>
+
+                                                    <?php
+                                                                }
+                                                               ?>
+                                                  </div>
+                                                  <div class="modal-footer">
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                            </div> 
 				<?php
 				};
 				?>
 						</ul>
 						<ul class="nav navbar-nav navbar-right">
-							<li><a title="<?php echo LABEL_busqueda;?>" href="index.php?xsearch=1"><?php echo ucfirst(LABEL_BusquedaAvanzada);?></a></li>
+							<li><?php echo doMenuLang($metadata["arraydata"]["tema_id"]); ?></li>
+                                                        <li><a title="<?php echo LABEL_busqueda;?>" href="index.php?xsearch=1"><?php echo ucfirst(LABEL_BusquedaAvanzada);?></a></li>
 							<li><a title="<?php echo MENU_Sobre;?>" href="sobre.php"><?php echo MENU_Sobre;?></a></li>
 						</ul>
 						<!-- Search Box -->
@@ -290,7 +341,7 @@ $search_string = (doValue($_GET,FORM_LABEL_buscar)) ? XSSprevent(doValue($_GET,F
 					?>
 					<strong><?php echo LABEL_Autor ?>: </strong><span class="footerCol2"><?php echo $_SESSION["CFGAutor"];?></span>
 					<div class="clearer"></div>
-					<?php echo doMenuLang($metadata["arraydata"]["tema_id"]); ?>
+					
 				</div>			
 					
 		    </div>
