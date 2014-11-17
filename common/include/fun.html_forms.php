@@ -1693,10 +1693,8 @@ return $rows;
 
 function HTMLformLogin($task_result) 
 {
-
-	$rows.='<form class="myform" id="mylogin" name="mylogin" action="login.php" method="post">
-		 <fieldset>
-		<legend>'.ucfirst(LABEL_login).'</legend>';
+        $rows.='<form role="form" id="mylogin" name="mylogin" action="login.php" method="post">';
+	$rows.='';
 
 
 	if(is_array($task_result))
@@ -1704,22 +1702,19 @@ function HTMLformLogin($task_result)
 		$rows.='<div>'.$task_result["msg"].'</div>';
 	}
 	
-
-	$rows.='<div><label for="mail" accesskey="t">'.ucfirst(LABEL_mail).'</label>';
-	$rows.='<input type="text" name="id_correo_electronico" class="campo" id="mail" maxlength="64" size="11"/>';
-	$rows.='	</div>';
-
-	$rows.='<div><label for="id_password" accesskey="t">'.ucfirst(LABEL_pass).'</label>';
-	$rows.='<input type="password" name="id_password" class="campo" id="id_password" maxlength="64" size="11"/>';
-	$rows.='	</div>';
-
- 	$rows.='<div class="submit_form" style="margin-left:15em" align="center">';
- 	$rows.='<input type="hidden"  name="task" value="login" />'; 	
-	$rows.='<input type="submit"  class="submit ui-corner-all" name="boton" value="'.LABEL_Enviar.'"/>';
+        $rows.='<div class="form-group">';
+        $rows.='<label for="mail" accesskey="t">'.ucfirst(LABEL_mail).'</label>';
+	$rows.='<input type="email" name="id_correo_electronico" class="form-control" id="mail" placeholder="'.ucfirst(LABEL_mail).'">';
 	$rows.='</div>';
-	
-	$rows.='<div style="margin-left:35em"><a href="login.php?task=recovery">'.LABEL_user_lost_password.'</a></div>';
-	$rows.='  </fieldset>';
+
+	$rows.='<div class="form-group">';
+        $rows.='<label for="id_password" accesskey="t">'.ucfirst(LABEL_pass).'</label>';
+	$rows.='<input type="password" name="id_password" class="form-control" id="id_password" placeholder="'.ucfirst(LABEL_pass).'"/>';
+	$rows.='</div>';
+        
+        $rows.='<button type="submit" class="btn btn-primary" name="boton">'.LABEL_Enviar.'</button> ';
+        $rows.='<a type="button" class="btn btn-warning" href="login.php?task=recovery">'.LABEL_user_lost_password.'</a>';
+
 	$rows.='</form>';
 
 	$rows.='</div>';

@@ -156,8 +156,8 @@ h4 a,h4 a:hover{color:#00C;text-decoration:underline;}
 input,textarea{color:#2F2F2E;background:#fff;border:1px solid #2F2F2E;text-align:left;font-size:12px;font-family:Arial, Helvetica, sans-serif;padding-left:3px;margin-top:4px;}
 select{font-size:12px;font-family:Arial, Helvetica, sans-serif;padding-left:3px;margin-top:4px;text-align:left;}
 input:focus,select:focus,textarea:focus{background:#FFF;color:#000;}
-label{width:40%;float:left;text-align:right;font-weight:bolder;margin-right:0.5em;display:block;clear:left;margin-top:4px;}
-.submit input{margin-left:4.5em;color:#000;background:#BFBFBF;border:2px outset #d7b9c9;}
+/* label{width:40%;float:left;text-align:right;font-weight:bolder;margin-right:0.5em;display:block;clear:left;margin-top:4px;}
+.submit input{margin-left:4.5em;color:#000;background:#BFBFBF;border:2px outset #d7b9c9;} */
 fieldset{border:1px solid #dbdbd9;width:90%;}
 legend{border:1px solid #dbdbd9;margin:20px 10px 10px;padding:2px 6px;}
 legend a{text-decoration:underline;}

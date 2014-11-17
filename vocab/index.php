@@ -270,7 +270,7 @@ $search_string = (doValue($_GET,FORM_LABEL_buscar)) ? XSSprevent(doValue($_GET,F
                                                                ?>
                                                   </div>
                                                   <div class="modal-footer">
-                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>                                                    
+                                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>                                                    
                                                   </div>
                                                 </div>
                                               </div>
