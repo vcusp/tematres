@@ -314,6 +314,7 @@ $search_string = (doValue($_GET,FORM_LABEL_buscar)) ? XSSprevent(doValue($_GET,F
 <!-- ###### Footer ###### -->
 
     <div class="footer">
+        <div class="well well-lg">
             <p>Desenvolvido com Tematres 1.81</p>                
             <p><?php echo LABEL_URI ?>: <span class="footerCol2"><a href="<?php echo $_SESSION["CFGURL"];?>"><?php echo $_SESSION["CFGURL"];?></a></span></p>
 				<?php
@@ -331,5 +332,6 @@ $search_string = (doValue($_GET,FORM_LABEL_buscar)) ? XSSprevent(doValue($_GET,F
 			
     
   </div>
+        </div>
  </body>
 </html>

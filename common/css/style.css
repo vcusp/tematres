@@ -104,6 +104,9 @@ dt:after{content:': ';}
 #siteinfo{clear:both;width:100%;margin:0 auto;}
 #search-container{float:right;width:270px;text-align:right;}
 #search-container h2{display:none;}
+#relacionesTermino {
+    padding-bottom: 2em;
+}
 #search-container input{border:1px solid #ccc;background:#fafafa;padding:3px;}
 #search-container input.textinput:focus{background:#fff;}
 #search-container #submit_search{background:#369;color:#fff;border:1px solid #369;margin-left:3px;padding:2px;}

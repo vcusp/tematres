@@ -467,13 +467,68 @@ $body.=HTMLURI4term($array[tema_id]);
 
 
 $body.='</div>';
+if($array["isMetaTerm"]==1)
+{
+    $body.='';
+}
+else
+{
+$body.='<div class="panel panel-default">';
+$body.='<div class="panel-heading">';
+$body.='<h3 class="panel-title">Construtor de termo para catalogação</h3>';
+$body.='</div>';
+$body.='<div class="panel-body">';
+$body.='<form method="get" id="simple-search" name="simple-search" action="index.php" onsubmit="return checkrequired(this)">';
+$body.='<div class="form-group">';
+$body.='<p class="form-control-static">'.$array[titTema].'</p>';
+$body.='</div>';
+$body.='<div class="form-group">';
+$body.='<label class="sr-only" for="qualificador">Termo</label>';
+$body.='<input type="text" class="form-control" id="qualificador" placeholder="Qualificador">';
+$body.='</div>';
+$body.='<div class="form-group">';
+$body.='<label class="sr-only" for="genero">Gênero e Forma</label>';
+$body.='<input type="text" class="form-control" id="genero" placeholder="Gênero e Forma">';
+$body.='</div>';
+$body.='<div class="form-group">';
+$body.='<label class="sr-only" for="exampleInputPassword2">Data</label>';
+$body.='<input type="text" class="form-control" id="data" placeholder="Data">';
+$body.='</div>';
+$body.='<div class="form-group">';
+$body.='<label class="sr-only" for="geografico">Termo</label>';
+$body.='<input type="text" class="form-control" id="geografico" placeholder="Geográfico">';
+$body.='</div>';
+$body.='<button type="submit" class="btn btn-default">Gerar</button>';
+$body.='<div class="form-group">';
+$body.='<p>Resultado</p>';
+$body.='</div>';
+$body.='</form>';
+$body.='</div>';
+$body.='</div>';
+}
 $body.='</div>';
 $body.='<div class="col-md-4">';
+$body.='<div class="panel panel-default">';
 /*
  * $HTMLterminos[tema_id] es el ID del término válido siempre
  * 
 */
-$body.='<div class="panel panel-info">';
+if($array["isMetaTerm"]==1)
+{
+$body.='';
+}
+else
+{
+
+$body.='<div class="panel-heading">';
+$body.='<h3 class="panel-title">Pesquisar na USP</h3>';
+$body.='</div>';
+$body.='<div class="panel-body">';
+$body.='<a href="http://200.144.190.234/F/?func=scan&scan_code=SUB&scan_start='.$array[titTema].'">Pesquisar no DEDALUS</a><br/>';
+$body.='<a href="http://www.producao.usp.br/browse?type=subject&value='.$array[titTema].'">Pesquisar na BDPI</a><br/>';
+$body.='<a href="http://www.teses.usp.br/index.php?option=com_jumi&fileid=19&Itemid=87&lang=pt-br&g=1&c0=p&o0=AND&b0='.$array[titTema].'">Pesquisar na BDTD</a>';
+$body.='</div>';
+
 $body.='<div class="panel-heading">';
 $body.='<h3 class="panel-title">Exportar termo</h3>';
 $body.='</div>';
@@ -497,6 +552,7 @@ $body.='</div>';
 $body.='<div class="panel-body">';
 $body.=HTML_URLsearch($CFG[SEARCH_URL_SITES],$array);
 $body.='</div>';
+}
 $body.='<div class="panel-heading">';
 $body.='<h3 class="panel-title">Sobre o termo</h3>';
 $body.='</div>';
