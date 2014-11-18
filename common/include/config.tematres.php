@@ -163,7 +163,7 @@ $CFG["SEARCH_URL_SITES_SINTAX"] = Array(
 	'wikipedia' => Array(
 		'favicon' => 'wikipedia_mini.png',
 		'leyenda' => 'Wikipedia',
-		'url' => 'http://es.wikipedia.org/wiki/Especial:Search?search=STRING_BUSQUEDA&amp;fulltext=Buscar+en+texto',
+		'url' => 'http://pt.wikipedia.org/wiki/Especial:Search?search=STRING_BUSQUEDA&amp;fulltext=Buscar+en+texto',
 		'encode'=>FALSE
 	),
 

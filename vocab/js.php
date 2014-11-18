@@ -298,7 +298,135 @@ jQuery(function(){
   			});
 	}); 
 
+/* ---------------------------- */
+/* AJAX search suggest - Qualificador			*/
+/* ---------------------------- */
 
+
+var options, a;
+var onSelect = function(val, data) { $('#qualificador #id').val(data); $('#qualificador'); };   
+jQuery(function(){
+
+	function formatItem(row) {
+		return row["value"] + " (<?php echo '<strong>'.LABEL_terminoExistente.'</strong>';?>)";
+	}
+
+	    options = {
+		    serviceUrl:'suggest.php' ,
+		    minChars:2,
+		    delimiter: /(,|;)\s*/, // regex or character
+		    maxHeight:400,
+		    width:600,
+		    zIndex: 9999,
+		    deferRequestBy: 0, //miliseconds	    
+		    noCache: false, //default is false, set to true to disable caching
+		    // callback function:
+		    onSelect: onSelect,
+	    	};
+	    a = $('#qualificadorresposta').autocomplete(options);
+		
+	    var ac = $('#addTerms').autocomplete({
+		    minChars:2,
+		    serviceUrl:'suggest.php?t=0&amp;',
+		    delimiter: /(,|;)\s*/, // regex or character
+		    maxHeight:400,
+		    width:600,
+		    zIndex: 9999,
+		    formatResult: formatItem,
+		    delimiter: "\n",
+		    deferRequestBy: 0, //miliseconds
+		    noCache: false, //default is false, set to true to disable caching
+  			});
+	}); 
+
+
+/* ---------------------------- */
+/* AJAX search suggest - Gênero			*/
+/* ---------------------------- */
+
+
+var options, a;
+var onSelect = function(val, data) { $('#genero #id').val(data); $('#genero'); };   
+jQuery(function(){
+
+	function formatItem(row) {
+		return row["value"] + " (<?php echo '<strong>'.LABEL_terminoExistente.'</strong>';?>)";
+	}
+
+	    options = {
+		    serviceUrl:'suggest.php' ,
+		    minChars:2,
+		    delimiter: /(,|;)\s*/, // regex or character
+		    maxHeight:400,
+		    width:600,
+		    zIndex: 9999,
+		    deferRequestBy: 0, //miliseconds	    
+		    noCache: false, //default is false, set to true to disable caching
+		    // callback function:
+		    onSelect: onSelect,
+	    	};
+	    a = $('#generoresposta').autocomplete(options);
+		
+	    var ac = $('#addTerms').autocomplete({
+		    minChars:2,
+		    serviceUrl:'suggest.php?t=0&amp;',
+		    delimiter: /(,|;)\s*/, // regex or character
+		    maxHeight:400,
+		    width:600,
+		    zIndex: 9999,
+		    formatResult: formatItem,
+		    delimiter: "\n",
+		    deferRequestBy: 0, //miliseconds
+		    noCache: false, //default is false, set to true to disable caching
+  			});
+	}); 
+
+
+/* ---------------------------- */
+/* AJAX search suggest - Geográfico			*/
+/* ---------------------------- */
+
+
+var options, a;
+var onSelect = function(val, data) { $('#geografico #id').val(data); $('#geografico'); };   
+jQuery(function(){
+
+	function formatItem(row) {
+		return row["value"] + " (<?php echo '<strong>'.LABEL_terminoExistente.'</strong>';?>)";
+	}
+
+	    options = {
+		    serviceUrl:'suggest.php' ,
+		    minChars:2,
+		    delimiter: /(,|;)\s*/, // regex or character
+		    maxHeight:400,
+		    width:600,
+		    zIndex: 9999,
+		    deferRequestBy: 0, //miliseconds	    
+		    noCache: false, //default is false, set to true to disable caching
+		    // callback function:
+		    onSelect: onSelect,
+	    	};
+	    a = $('#geograficoresposta').autocomplete(options);
+		
+	    var ac = $('#addTerms').autocomplete({
+		    minChars:2,
+		    serviceUrl:'suggest.php?t=0&amp;',
+		    delimiter: /(,|;)\s*/, // regex or character
+		    maxHeight:400,
+		    width:600,
+		    zIndex: 9999,
+		    formatResult: formatItem,
+		    delimiter: "\n",
+		    deferRequestBy: 0, //miliseconds
+		    noCache: false, //default is false, set to true to disable caching
+  			});
+	}); 
+
+
+
+
+        
 
 /* ---------------------------- */
 /* OBSERVATORIO					*/
