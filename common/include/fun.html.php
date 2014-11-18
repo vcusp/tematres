@@ -393,7 +393,7 @@ if($cantBT>0){
 		}
 	};
 
-$row_miga.='<li><a title="'.MENU_Inicio.'" href="index.php">'.ucfirst(MENU_Inicio).'</a></li>'.$menu_miga.'<li>'.$array[titTema].'</li>';
+$row_miga.='<li><a title="'.MENU_Inicio.'" href="index.php">'.ucfirst(MENU_Inicio).'</a></li>'.$menu_miga.'<li><p>'.$array[titTema].'</p></li>';
 
 
 

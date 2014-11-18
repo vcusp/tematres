@@ -581,6 +581,7 @@ ul{
 #breadcrumbs-two li{
   float: left;
   margin: 0 .5em 0 1em;
+  padding-top: 0.5em;
 }
 
 #breadcrumbs-two a{
@@ -593,6 +594,13 @@ ul{
   position: relative;
 }
 
+#breadcrumbs-two p{
+  padding: .7em .1em;
+  float: left;
+  text-decoration: none;
+  position: relative;
+}
+
 #breadcrumbs-two a:hover{
   background: #99db76;
 }
@@ -600,9 +608,9 @@ ul{
 #breadcrumbs-two a::before{
   content: "";
   position: absolute;
-  top: 50%; 
+  top: 53%; 
   margin-top: -1.5em;   
-  border-width: 1.5em 0 1.5em 1em;
+  border-width: 1.4em 0 1.5em 1em;
   border-style: solid;
   border-color: #ddd #ddd #ddd transparent;
   left: -1em;
