@@ -37,8 +37,14 @@ else
 	$resumeResult = '<p class="error">'.sprintf(MSG_minCharSerarch,stripslashes($texto),strlen($texto),CFG_MIN_SEARCH_SIZE-1).'</p>';
 }
 
- $body.='<div id="bodyText"><h1>'.LABEL_busqueda.'</h1>';
- 
+ $body.='<div id="bodyText">';
+ $body.='<div class="row">';
+ $body.='<div class="col-md-12">';
+ $body.='<h1>'.LABEL_busqueda.'</h1>';
+ $body.='</div>';
+ $body.='</div>';
+ $body.='<div class="row">';
+ $body.='<div class="col-md-8">';
  $body.=$resumeResult;
 
 if($sql_cant>0)
@@ -117,8 +123,11 @@ if($sql_cant>0)
 
 	 };//fin del while
 	$row_result.='</ul>';
-	$row_result.='</div>';
 
+
+$row_result.='</div>';
+$row_result.='</div>';
+$row_result.='<div class="col-md-4">';
 
 
 
@@ -143,11 +152,16 @@ $result_suplementa.=HTMLbusquedaExpandidaTR($acumula_temas);
 if(strlen($result_suplementa)>0)
 {
 		//~ $result_suplementa='<div id="lista_secundaria">'.$result_suplementa.'</div>';
-		$result_suplementa='<div id="lista_secundaria">'.$result_suplementa.'</div>';
+                $result_suplementa='<div>'.$result_suplementa.'</div></div></div>';
+                
 }
 
-return $body.$row_result.$result_suplementa.'</div>';
+
+return $body.$row_result.$result_suplementa.'';
+
+
 };
+
 #######################################################################
 
 #
@@ -524,9 +538,9 @@ $body.='<div class="panel-heading">';
 $body.='<h3 class="panel-title">Pesquisar na USP</h3>';
 $body.='</div>';
 $body.='<div class="panel-body">';
-$body.='<a href="http://200.144.190.234/F/?func=scan&scan_code=SUB&scan_start='.$array[titTema].'">Pesquisar no DEDALUS</a><br/>';
-$body.='<a href="http://www.producao.usp.br/browse?type=subject&value='.$array[titTema].'">Pesquisar na BDPI</a><br/>';
-$body.='<a href="http://www.teses.usp.br/index.php?option=com_jumi&fileid=19&Itemid=87&lang=pt-br&g=1&c0=p&o0=AND&b0='.$array[titTema].'">Pesquisar na BDTD</a>';
+$body.='<a target="_blank" href="http://200.144.190.234/F/?func=scan&scan_code=SUB&scan_start='.$array[titTema].'">Pesquisar no Catálogo DEDALUS</a><br/>';
+$body.='<a target="_blank" href="http://www.producao.usp.br/browse?type=subject&value='.$array[titTema].'">Pesquisar na Biblioteca Digital da Produção Intelectual</a><br/>';
+$body.='<a target="_blank" href="http://www.teses.usp.br/index.php?option=com_jumi&fileid=19&Itemid=87&lang=pt-br&g=1&c0=p&o0=AND&b0='.$array[titTema].'">Pesquisar na Biblioteca Digital de Teses e Dissertações</a>';
 $body.='</div>';
 
 $body.='<div class="panel-heading">';
