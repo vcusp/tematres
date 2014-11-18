@@ -199,7 +199,7 @@ $search_string = (doValue($_GET,FORM_LABEL_buscar)) ? XSSprevent(doValue($_GET,F
 		<strong>Departamento Técnico do Sistema Integrado de Bibliotecas da USP</strong><br>
 			Rua da Biblioteca, S/N - Complexo Brasiliana<br>
 			05508-050 - Cidade Universitária, São Paulo, SP - Brasil<br>
-			<abbr title="Phone">Tel:</abbr> (0xx11) 3091-1539 e 3091-1566<br>
+			<abbr title="Phone">Tel:</abbr> (0xx11) 3091-4439<br>
 			<strong>E-mail:</strong> <a href="mailto:#">atendimento@sibi.usp.br</a>
 		</address>
 	</div>

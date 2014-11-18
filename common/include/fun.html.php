@@ -379,7 +379,7 @@ if($cantBT>0){
 		}
 	};
 
-$row_miga.='<ol><li><a title="'.MENU_Inicio.'" href="index.php">'.ucfirst(MENU_Inicio).'</a></li>'.$menu_miga.'<li>'.$array[titTema].'</li></ol>';
+$row_miga.='<li><a title="'.MENU_Inicio.'" href="index.php">'.ucfirst(MENU_Inicio).'</a></li>'.$menu_miga.'<li>'.$array[titTema].'</li>';
 
 
 
@@ -392,7 +392,7 @@ $body.=$MSG_ERROR_RELACION;
 if($array["isMetaTerm"]==1)
 {
 	$body.=' <h1 class="metaTerm" title="'.$array[titTema].' - '.NOTE_isMetaTermNote.'" id="T'.$array[tema_id].'">'.$array[titTema].'</h1>';
-	$body.=' <p class="metaTerm" title="'.NOTE_isMetaTermNote.'" id="noteT'.$array[tema_id].'">'.NOTE_isMetaTerm.'</p>';
+	$body.=' <div class="alert alert-warning" role="alert" title="'.NOTE_isMetaTermNote.'" id="noteT'.$array[tema_id].'">'.NOTE_isMetaTerm.'</div>';
 }
 else
 {
@@ -409,15 +409,18 @@ if(($_SESSION[$_SESSION["CFGURL"]][ssuser_id])||(CFG_VIEW_STATUS=='1'))
 	$label_estado='<span class="estado_termino'.$array[estado_id].'"> ' .ucfirst( arrayReplace(array("12","13","14"),array(LABEL_Candidato,LABEL_Aceptado,LABEL_Rechazado),$array[estado_id])). ': '.$fecha_estado[dia].'-'.$fecha_estado[descMes].'-'.$fecha_estado[ano].'</span> ';
    	};
 
-#Div miga de pan
-$body.='<div id="breadScrumb">';
-$body.=$row_miga;
-$body.='</div>';
-# fin Div miga de pan
+
 
 $body.=HTMLNotasTermino($array);
 
 #Div relaciones del terminos
+$body.='<div class="row">';
+$body.='<div class="col-md-8">';
+#Div miga de pan
+$body.='<ul id="breadcrumbs-two">';
+$body.=$row_miga;
+$body.='</ul>';
+# fin Div miga de pan
 $body.='<div id="relacionesTermino">';
 $body.=$HTMLterminos[HTMLterminos]["UP"];
 $body.=$HTMLterminos[HTMLterminos]["TG"];
@@ -463,29 +466,19 @@ $body.=HTMLtargetTerms($array[tema_id]);
 $body.=HTMLURI4term($array[tema_id]);
 
 
-
 $body.='</div>';
-
-
-#Fin div bodyText
 $body.='</div>';
-
-#Div pie de datos
-$body.='<div id="pie_datos" class="enlacefoo"><ul id="fechas"><li> '.LABEL_Fecha.': '.$fecha_crea[dia].'-'.$fecha_crea[descMes].'-'.$fecha_crea[ano].'</li>';
-if($array[cuando_final]){
-	$fecha_cambio=do_fecha($array[cuando_final]);
-	$body.='<li>'.LABEL_fecha_modificacion.': '.$fecha_cambio[dia].'-'.$fecha_cambio[descMes].'-'.$fecha_cambio[ano].'</li> ';
-	}
-$body.='</ul>'.$label_estado.'</div> ';
-# fin Div pie de datos
-
-
-$body.=HTML_URLsearch($CFG[SEARCH_URL_SITES],$array);
-
+$body.='<div class="col-md-4">';
 /*
  * $HTMLterminos[tema_id] es el ID del término válido siempre
  * 
 */
+$body.='<div class="panel panel-info">';
+$body.='<div class="panel-heading">';
+$body.='<h3 class="panel-title">Exportar termo</h3>';
+$body.='</div>';
+$body.='<div class="panel-body">';
+
 $body.='<ul id="enlaces_xml">';
 $body.='        <li><a title="'.LABEL_verEsquema.' BS8723-5"  href="xml.php?bs8723Tema='.$HTMLterminos[tema_id].'">BS8723-5</a></li>';
 $body.='        <li><a title="'.LABEL_verEsquema.' Dublin Core"  href="xml.php?dcTema='.$HTMLterminos[tema_id].'">DC</a></li>';
@@ -497,6 +490,34 @@ $body.='        <li><a title="'.LABEL_verEsquema.' Zthes" href="xml.php?zthesTem
 $body.='        <li><a title="'.LABEL_verEsquema.' JavaScript Object Notation for Linked Data" href="xml.php?jsonTema='.$HTMLterminos[tema_id].'">JSON</a></li>  ';
 $body.='        <li><a title="'.LABEL_verEsquema.' JavaScript Object Notation for Linked Data" href="xml.php?jsonldTema='.$HTMLterminos[tema_id].'">JSON-LD</a></li>  ';
 $body.='</ul>';
+$body.='</div>';
+$body.='<div class="panel-heading">';
+$body.='<h3 class="panel-title">Pesquisar termo em outras fontes</h3>';
+$body.='</div>';
+$body.='<div class="panel-body">';
+$body.=HTML_URLsearch($CFG[SEARCH_URL_SITES],$array);
+$body.='</div>';
+$body.='<div class="panel-heading">';
+$body.='<h3 class="panel-title">Sobre o termo</h3>';
+$body.='</div>';
+$body.='<div class="panel-body">';
+#Div pie de datos
+$body.='<ul id="fechas"><li> '.LABEL_Fecha.': '.$fecha_crea[dia].'-'.$fecha_crea[descMes].'-'.$fecha_crea[ano].'</li>';
+if($array[cuando_final]){
+	$fecha_cambio=do_fecha($array[cuando_final]);
+	$body.='<li>'.LABEL_fecha_modificacion.': '.$fecha_cambio[dia].'-'.$fecha_cambio[descMes].'-'.$fecha_cambio[ano].'</li> ';
+	}
+$body.='</ul>'.$label_estado.' ';
+# fin Div pie de datos
+$body.='</div>';
+$body.='</div>';
+
+#Fin div bodyText
+$body.='</div>';
+$body.='</div>';
+
+
+
 
 return $body;
 };
