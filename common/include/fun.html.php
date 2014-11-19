@@ -596,27 +596,37 @@ return $body;
 
 function HTMLmainMenu(){
 	
-	$row.='<li><a tabindex="0" href="#menu-manager" id="hierarchybreadcrumb">'.LABEL_Menu.'</a>
-	<div id="menu-manager" class="hidden" style="display: none">';
-
-	$row.='<ul class="menumanager">';
-
-/*
-Agregar térm
-*/
+        $row.='<li class="dropdown">';
+        $row.='<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">'.LABEL_Menu.'</a>';
+        $row.='<ul class="dropdown-menu" role="menu">';
         $row.='<li><a title="'.ucfirst(MENU_AgregarT).'" href="index.php?taskterm=addTerm&amp;tema=0">'.ucfirst(MENU_AgregarT).'</a></li>';
+        $row.='<li role="presentation" class="dropdown-header">'.ucfirst(LABEL_Ver).'</li>';
+        $row.='<li><a title="'.ucfirst(LABEL_terminosLibres).'" href="index.php?verT=L">'.ucfirst(LABEL_terminosLibres).'</a></li>';
+        $row.='<li><a title="'.ucfirst(LABEL_terminosRepetidos).'" href="index.php?verT=R">'.ucfirst(LABEL_terminosRepetidos).'</a></li>';
+        $row.='<li><a title="'.ucfirst(LABEL_termsNoBT).'" href="index.php?verT=NBT">'.ucfirst(LABEL_termsNoBT).'</a></li>';
+        $row.='<li><a title="'.ucfirst(LABEL_Rechazados).'" href="index.php?estado_id=14">'.ucfirst(LABEL_Rechazados).'</a></li>';
+        $row.='<li><a title="'.ucfirst(LABEL_Candidato).'" href="index.php?estado_id=12">'.ucfirst(LABEL_Candidatos).'</a></li>';       
+        $row.='<li role="presentation" class="dropdown-header">Menu do usuário</li>';
+        $row.='<li><a title="'.LABEL_FORM_simpleReport.'" href="index.php?mod=csv">'.LABEL_FORM_simpleReport.'</a></li>';
+        $row.='<li><a title="'.MENU_MisDatos.'" href="login.php">'.MENU_MisDatos.'</a></li>';
+        $row.='<li><a title="'.MENU_Salir.'" href="index.php?cmdlog='.substr(md5(date("Ymd")),"5","10").'">'.MENU_Salir.'</a></li>';        
+        $row.='</ul>';
+        $row.='</li>';    
 
 /*
  * Admin menu
 */
 if($_SESSION[$_SESSION["CFGURL"]][ssuser_nivel]=='1'){
-	$row.='<li><a href="#">'.LABEL_Admin.'</a>';
-	$row.='<ul>';
-	$row.='<li><a title="'.ucfirst(LABEL_lcConfig).'" href="admin.php?vocabulario_id=list">'.ucfirst(LABEL_lcConfig).'</a></li>';
+
+        $row.='<li class="dropdown">';
+        $row.='<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">'.LABEL_Admin.'</a>';
+        $row.='<ul class="dropdown-menu" role="menu">';
+
+        $row.='<li><a title="'.ucfirst(LABEL_lcConfig).'" href="admin.php?vocabulario_id=list">'.ucfirst(LABEL_lcConfig).'</a></li>';
 	$row.='<li><a title="'.ucfirst(MENU_Usuarios).'" href="admin.php?user_id=list">'.ucfirst(MENU_Usuarios).'</a></li>';
 	$row.='<li><a title="'.ucfirst(LABEL_export).'" href="admin.php?doAdmin=export">'.ucfirst(LABEL_export).'</a></li>';
 
-	$row.='<li><a href="#">'.ucfirst(LABEL_dbMantenimiento).'</a><ul>';
+        $row.='<li role="presentation" class="dropdown-header">'.ucfirst(LABEL_dbMantenimiento).'</li>';
 	$row.='<li><a href="admin.php?doAdmin=reindex">'.ucfirst(LABEL_reIndice).'</a></li>';	
 
 	//Enable or not SPARQL endpoint
@@ -634,27 +644,7 @@ if($_SESSION[$_SESSION["CFGURL"]][ssuser_nivel]=='1'){
 
 	$row.='</ul></li>';
 
-	$row.='</ul></li>';
-	}
-/*
-Menu ver
-*/
-$row.='<li><a href="#">'.ucfirst(LABEL_Ver).'</a><ul>';
-$row.='<li><a title="'.ucfirst(LABEL_terminosLibres).'" href="index.php?verT=L">'.ucfirst(LABEL_terminosLibres).'</a></li>';
-$row.='<li><a title="'.ucfirst(LABEL_terminosRepetidos).'" href="index.php?verT=R">'.ucfirst(LABEL_terminosRepetidos).'</a></li>';
-$row.='<li><a title="'.ucfirst(LABEL_termsNoBT).'" href="index.php?verT=NBT">'.ucfirst(LABEL_termsNoBT).'</a></li>';
-$row.='<li><a title="'.ucfirst(LABEL_Rechazados).'" href="index.php?estado_id=14">'.ucfirst(LABEL_Rechazados).'</a></li>';
-$row.='<li><a title="'.ucfirst(LABEL_Candidato).'" href="index.php?estado_id=12">'.ucfirst(LABEL_Candidatos).'</a></li>';
-$row.='</ul></li>';
-
-
-//User menu		
-$row.='<li><a title="'.LABEL_FORM_simpleReport.'" href="index.php?mod=csv">'.LABEL_FORM_simpleReport.'</a></li>';
-$row.='<li><a title="'.MENU_MisDatos.'" href="login.php">'.MENU_MisDatos.'</a></li>';
-$row.='<li><a title="'.MENU_Salir.'" href="index.php?cmdlog='.substr(md5(date("Ymd")),"5","10").'">'.MENU_Salir.'</a></li>';
-
-$row.='   </ul>';		
-$row.='</div></li>';
+	}   
 
 return $row;
 
