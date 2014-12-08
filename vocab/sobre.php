@@ -583,7 +583,7 @@ $search_string = (doValue($_GET,FORM_LABEL_buscar)) ? XSSprevent(doValue($_GET,F
     $ARRAYmailContact=ARRAYfetchValue('CONTACT_MAIL');
     ?>
 <div id="Estatísticas">
-     <h1>Estatísticas do Vocabulário</h1>
+     <h1>Dados e Estatísticas do Vocabulário</h1>
      
      <table class="table table-bordered">
          <tbody>
