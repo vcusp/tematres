@@ -582,19 +582,47 @@ $search_string = (doValue($_GET,FORM_LABEL_buscar)) ? XSSprevent(doValue($_GET,F
     $fecha_mod=do_fecha($_SESSION["CFGlastMod"]);
     $ARRAYmailContact=ARRAYfetchValue('CONTACT_MAIL');
     ?>
-<div id="bodyText">
-     <h1><?php echo $_SESSION[CFGTitulo];?> / <?php echo $_SESSION[CFGAutor];?></h1>
-        <dl id="sumario">
-        <dt><?php echo ucfirst(LABEL_URI);?></dt><dd><?php echo $_SESSION[CFGURL];?> </dd>
-        <dt><?php echo ucfirst(LABEL_Idioma);?></dt><dd><?php echo $_SESSION[CFGIdioma];?></dd>
-        <dt><?php echo ucfirst(FORM_LABEL__contactMail);?></dt><dd><?php echo $ARRAYmailContact["value"];?></dd>
-        <dt><?php echo ucfirst(LABEL_Fecha);?></dt><dd><?php echo $fecha_crea[dia].'/'.$fecha_crea[mes].'/'.$fecha_crea[ano];?></dd>
-		<dt><?php echo ucfirst(LABEL_lastChangeDate);?></dt><dd><?php echo $fecha_mod[dia].'/'.$fecha_mod[mes].'/'.$fecha_mod[ano];;?>
-        <dt><?php echo ucfirst(LABEL_Keywords);?></dt><dd><?php echo $_SESSION[CFGKeywords];?></dd>
-        <dt><?php echo ucfirst(LABEL_TipoLenguaje);?></dt><dd><?php echo $_SESSION[CFGTipo];?></dd>
-        <dt><?php echo ucfirst(LABEL_Cobertura);?></dt><dd><?php echo $_SESSION[CFGCobertura];?></dd>
-        <dt><?php echo ucfirst(LABEL_Terminos);?></dt><dd><?php echo $resumen[cant_total];?> <ul>
-        <ul>
+<div id="Estatísticas">
+     <h1>Estatísticas do Vocabulário</h1>
+     
+     <table class="table table-bordered">
+         <tbody>
+             <tr>
+                 <th><?php echo ucfirst(LABEL_URI);?></th>
+                 <th><?php echo $_SESSION[CFGURL];?></th>   
+             </tr>
+             <tr>
+                 <th><?php echo ucfirst(LABEL_Idioma);?></th>
+                 <th><?php echo $_SESSION[CFGIdioma];?></th>
+             </tr>
+             <tr>
+                 <th><?php echo ucfirst(FORM_LABEL__contactMail);?></th>
+                 <th><?php echo $ARRAYmailContact["value"];?></th>
+             </tr>
+             <tr>
+                 <th><?php echo ucfirst(LABEL_Fecha);?></th>
+                 <th><?php echo $fecha_crea[dia].'/'.$fecha_crea[mes].'/'.$fecha_crea[ano];?></th>
+             </tr>
+             <tr>
+                 <th><?php echo ucfirst(LABEL_lastChangeDate);?></th>
+                 <th><?php echo $fecha_mod[dia].'/'.$fecha_mod[mes].'/'.$fecha_mod[ano];;?></th>
+             </tr>
+             <tr>
+                 <th><?php echo ucfirst(LABEL_Keywords);?></th>
+                 <th><?php echo $_SESSION[CFGKeywords];?></th>
+             </tr>
+             <tr>
+                 <th><?php echo ucfirst(LABEL_TipoLenguaje);?></th>
+                 <th><?php echo $_SESSION[CFGTipo];?></th>
+             </tr>       
+             <tr>
+                 <th><?php echo ucfirst(LABEL_Cobertura);?></th>
+                 <th><?php echo $_SESSION[CFGCobertura];?></th>
+             </tr> 
+             <tr>
+                 <th><?php echo ucfirst(LABEL_Terminos);?></th>
+                 <th><?php echo $resumen[cant_total];?></th>
+             </tr> 
 	<?php
 
 	if($_SESSION[$_SESSION["CFGURL"]]["CFG_VIEW_STATUS"]==1)
@@ -608,9 +636,18 @@ $search_string = (doValue($_GET,FORM_LABEL_buscar)) ? XSSprevent(doValue($_GET,F
 			}
 	}	
 	?>
-	</ul></dd>
-        <dt><?php echo ucfirst(LABEL_RelTerminos);?></dt><dd><?php echo $resumen[cant_rel];?></dd>
-        <dt><?php echo ucfirst(LABEL_TerminosUP);?></dt><dd><?php echo $resumen[cant_up];?></dd>
+             <tr>
+                 <th><?php echo ucfirst(LABEL_RelTerminos);?></th>
+                 <th><?php echo $resumen[cant_rel];?></th>
+             </tr>    
+             <tr>
+                 <th><?php echo ucfirst(LABEL_TerminosUP);?></th>
+                 <th><?php echo $resumen[cant_up];?></th>
+             </tr>                
+
+     
+     
+
 		
 		<?php
 		//Evaluar si hay notas
@@ -623,9 +660,9 @@ $search_string = (doValue($_GET,FORM_LABEL_buscar)) ? XSSprevent(doValue($_GET,F
 			  while ($array=$sqlNoteType->FetchRow()){
 			  		 if($array[cant]>0)
 			  		 {
-			  		 	 echo '<dt>';
+			  		 	 echo '<tr><th>';
 				  		 echo  (in_array($array["value_id"],array(8,9,10,11,15))) ? arrayReplace(array(8,9,10,11,15),array(LABEL_NA,LABEL_NH,LABEL_NB,LABEL_NP,LABEL_NC),$array["value_id"]) : $array["value"];
-				    	 echo '</dt><dd> '.$array[cant].'</dd>';    	 
+				    	 echo '</th><th> '.$array[cant].'</th></tr>';    	 
 			  		 }	 
 			  };			
 		}
@@ -633,15 +670,19 @@ $search_string = (doValue($_GET,FORM_LABEL_buscar)) ? XSSprevent(doValue($_GET,F
 		//are enable SPARQL
 		if(CFG_ENABLE_SPARQL==1)
 		{
-			echo '<dt>'.LABEL_SPARQLEndpoint.'</dt> <dd><a href="'.$_SESSION["CFGURL"].'sparql.php" title="'.LABEL_SPARQLEndpoint.'">'.$_SESSION["CFGURL"].'sparql.php</a></dd>';
+			echo '<tr><th>'.LABEL_SPARQLEndpoint.'</th> <th><a href="'.$_SESSION["CFGURL"].'sparql.php" title="'.LABEL_SPARQLEndpoint.'">'.$_SESSION["CFGURL"].'sparql.php</a></th></tr>';
 		}			
 		//are enable SPARQL
 		if(CFG_SIMPLE_WEB_SERVICE ==1)
 		{
-			echo '<dt>API </dt> <dd><a href="'.$_SESSION["CFGURL"].'services.php" title="API">'.$_SESSION["CFGURL"].'services.php</a></dd>';
+			echo '<tr><th>API </th> <th><a href="'.$_SESSION["CFGURL"].'services.php" title="API">'.$_SESSION["CFGURL"].'services.php</a></th></tr>';
 		}			
 		?>	
-	</dl>
+
+         </tbody>
+
+</table>             
+             
 	<?php
 
 
