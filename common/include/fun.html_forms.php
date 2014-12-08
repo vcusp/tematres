@@ -1735,19 +1735,20 @@ function HTMLformLogin($task_result)
 
 function HTMLformRecoveryPassword($user_name="") 
 {
-	$rows.='<form class="myform" id="myRecovery" name="myRecovery" action="login.php" method="post">
+	$rows.='<form class="form-horizontal" id="myRecovery" name="myRecovery" action="login.php" method="post">
 		 <fieldset>
 		<legend>'.LABEL_user_recovery_password.'</legend>';
 
-	$rows.='<div><label for="'.LABEL_mail .'" accesskey="t">'.ucfirst(LABEL_mail).'</label>';
-	$rows.='<input type="text" name="id_correo_electronico_recovery" class="campo" id="id_correo_electronico_recovery" maxlength="64" size="11"/>';
-	$rows.='	</div>';
+	$rows.='<div class="form-group"><label for="'.LABEL_mail .'" accesskey="t" class="col-sm-2 control-label">'.ucfirst(LABEL_mail).'</label>';
+	$rows.='<div class="col-sm-10">';
+        $rows.='<input type="text" name="id_correo_electronico_recovery" class="form-control" id="id_correo_electronico_recovery" maxlength="64" size="11"/>';
+	$rows.='	</div></div>';
 	
- 	$rows.='<div class="submit_form" align="center">';
+ 	$rows.='<div class="form-group"><div class="col-sm-offset-2 col-sm-10">';
 	$rows.='<input type="hidden"  name="task" value="user_recovery" />'; 	
-	$rows.='<input type="button" class="submit ui-corner-all" name="cancelar" type="button" onClick="location.href=\'login.php\'" value="'.ucfirst(LABEL_Cancelar).'"/>'; 		
-	$rows.='<input type="submit"  class="submit ui-corner-all" name="boton" value="'.LABEL_Enviar.'"/>';
-	$rows.='</div>';
+	$rows.='<input type="button" class="btn btn-default" name="cancelar" type="button" onClick="location.href=\'login.php\'" value="'.ucfirst(LABEL_Cancelar).'"/>'; 		
+	$rows.='<input type="submit"  class="btn btn-default" name="boton" value="'.LABEL_Enviar.'"/>';
+	$rows.='</div></div>';
 	
 	$rows.='  </fieldset>';
 	$rows.='</form>';
