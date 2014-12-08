@@ -517,7 +517,8 @@ function HTMLformAdvancedSearch($array)
 	$array=XSSpreventArray($array);
 	
 	
-	$rows.='<form class="myform" name="advancedsearch" action="index.php#xstring" method="get" onsubmit="return checkrequired(this)">';
+        $rows.='<form class="form-horizontal" role="form" name="advancedsearch" action="index.php#xstring" method="get" onsubmit="return checkrequired(this)">';
+        
 	$rows.='  <fieldset>';
 
 	$rows.=' <legend>'.ucfirst(LABEL_BusquedaAvanzada).'</legend>';
@@ -558,20 +559,24 @@ function HTMLformAdvancedSearch($array)
 	 */
 	if(count($arrayWS)>1)
 	{
-		$rows.='<div><label for="ws" accesskey="f">'.ucfirst(LABEL_QueBuscar).'</label>';
-		$rows.='<select id="ws" name="ws">';
+		$rows.='<div class="form-group">';
+                $rows.='<label for="ws" accesskey="f" class="col-sm-2 control-label">'.ucfirst(LABEL_QueBuscar).'</label>';
+                $rows.='<div class="col-sm-10">';
+		$rows.='<select class="form-control" id="ws" name="ws">';
 		$rows.=doSelectForm($arrayWS,"$_GET[ws]");
 		$rows.='</select>';
-		$rows.='</div>';
+                $rows.='</div></div>';
 	}
 
-	$rows.='<div><label for="xstring" accesskey="s">'.ucfirst(LABEL_BuscaTermino).'</label>';
-	$rows.='<input name="xstring" type="text" id="xstring" size="25" maxlength="50" value="'.$array["xstring"].'"/>';
-	$rows.='</div>';
+	$rows.='<div class="form-group">';
+        $rows.='<label for="xstring" accesskey="s" class="col-sm-2 control-label">'.ucfirst(LABEL_BuscaTermino).'</label>';
+	$rows.='<div class="col-sm-10"><input class="form-control" name="xstring" type="text" id="xstring" value="'.$array["xstring"].'"/>';
+        $rows.='</div></div>';
 
-	$rows.='<div><label for="isExactMatch" accesskey="f">'.ucfirst(LABEL_esFraseExacta).'</label>';
+
+	$rows.='<div class="form-group"><div class="col-sm-offset-2 col-sm-10"><div class="checkbox"><label for="isExactMatch" accesskey="f">'.ucfirst(LABEL_esFraseExacta).'</label>';
 	$rows.='<input name="isExactMatch" type="checkbox" id="isExactMatch" value="1" '.do_check('1',$_GET["isExactMatch"],"checked").'/>';
-	$rows.='</div>';
+	$rows.='</div></div></div>';
 
 	//Evaluar si hay top terms
 	$sqlTopTerm=SQLverTopTerm();
@@ -582,12 +587,13 @@ function HTMLformAdvancedSearch($array)
 		{
 			$formSelectTopTerms[]=$arrayTopTerms[tema_id].'#'.$arrayTopTerms[tema];
 		}
-		$rows.='<div><label for="hasTopTerm" accesskey="t">'.ucfirst(LABEL_TopTerm).'</label>';
-		$rows.='<select id="hasTopTerm" name="hasTopTerm">';
+		$rows.='<div class="form-group"><label for="hasTopTerm" accesskey="t" class="col-sm-2 control-label">'.ucfirst(LABEL_TopTerm).'</label>';
+		$rows.='<div class="col-sm-10">';
+                $rows.='<select class="form-control" id="hasTopTerm" name="hasTopTerm">';
 		$rows.='<option value="">'.ucfirst(LABEL_Todos).'</option>';
 		$rows.=doSelectForm($formSelectTopTerms,"$_GET[hasTopTerm]");
 		$rows.='</select>';
-		$rows.='</div>';
+		$rows.='</div></div>';
 	}
 
 	//Evaluar si hay notas
@@ -623,12 +629,13 @@ function HTMLformAdvancedSearch($array)
 		 */
 		if(count($arrayVocabStats["cant_notas"])>0)
 		{
-			$rows.='<div><label for="hasNote" accesskey="n">'.ucfirst(LABEL_tipoNota).'</label>';
-			$rows.='<select id="hasNote" name="hasNote">';
+			$rows.='<div class="form-group"><label for="hasNote" accesskey="n" class="col-sm-2 control-label">'.ucfirst(LABEL_tipoNota).'</label>';
+			$rows.='<div class="col-sm-10">';
+                        $rows.='<select class="form-control" id="hasNote" name="hasNote">';
 			$rows.='<option value="">'.ucfirst(LABEL_Todos).'</option>';
 			$rows.=doSelectForm($arrayNoteType,"$_GET[hasNote]");
 			$rows.='</select>';
-			$rows.='</div>';
+			$rows.='</div></div>';
 		}
 	}
 
@@ -647,12 +654,13 @@ function HTMLformAdvancedSearch($array)
 			$formSelectByDate[]=$arrayTermsByDates[years].'-'.$arrayTermsByDates[months].'#'.$MONTHS["$arrayTermsByDates[months]"].'/'.$arrayTermsByDates[years].' ('.$arrayTermsByDates[cant].')';
 		}
 
-		$rows.='<div><label for="fromDate" accesskey="d">'.ucfirst(LABEL_DesdeFecha).'</label>';
-		$rows.='<select id="fromDate" name="fromDate">';
+		$rows.='<div class="form-group"><label for="fromDate" accesskey="d" class="col-sm-2 control-label">'.ucfirst(LABEL_DesdeFecha).'</label>';
+                $rows.='<div class="col-sm-10">';
+                $rows.='<select class="form-control" id="fromDate" name="fromDate">';
 		$rows.='<option value="">'.ucfirst(LABEL_Todos).'</option>';
 		$rows.=doSelectForm($formSelectByDate,"$_GET[fromDate]");
 		$rows.='</select>';
-		$rows.='</div>';
+		$rows.='</div></div>';
 	};
 
 	//Evaluar si hay candidatos
@@ -664,18 +672,19 @@ function HTMLformAdvancedSearch($array)
 		{
 			$formSelectByDeep[]=$arrayTermsByDeep[tdeep].'#'.$arrayTermsByDeep[tdeep].' ('.$arrayTermsByDeep[cant].')';
 		}
-		$rows.='<div><label for="termDeep" accesskey="e">'.ucfirst(LABEL_ProfundidadTermino).'</label>';
-		$rows.='<select id="termDeep" name="termDeep">';
+		$rows.='<div class="form-group"><label for="termDeep" accesskey="e" class="col-sm-2 control-label">'.ucfirst(LABEL_ProfundidadTermino).'</label>';
+                $rows.='<div class="col-sm-10">';
+                $rows.='<select class="form-control" id="termDeep" name="termDeep">';
 		$rows.='<option value="">'.ucfirst(LABEL_Todos).'</option>';
 		$rows.=doSelectForm($formSelectByDeep,"$_GET[termDeep]");
 		$rows.='</select>';
-		$rows.='</div>';
+		$rows.='</div></div>';
 	};
 
-	$rows.='<div class="submit_form" align="center">';
+	$rows.='<div class="form-group"><div class="col-sm-offset-2 col-sm-10">';
 	$rows.='<input type="hidden"  name="xsearch" id="xsearch" value="1"/>';
-	$rows.='<input type="button"  name="cancelar" type="button" onClick="location.href=\'index.php\'" value="'.ucfirst(LABEL_Cancelar).'"/>';
-	$rows.='<input type="submit"  id="boton" name="boton" value="'.LABEL_Enviar.'"/>';
+	$rows.='<input type="button" class="btn btn-default" name="cancelar" type="button" onClick="location.href=\'index.php\'" value="'.ucfirst(LABEL_Cancelar).'"/>';
+	$rows.='<input type="submit" class="btn btn-default" id="boton" name="boton" value="'.LABEL_Enviar.'"/>';
 
 	$rows.='</div>';
 	
