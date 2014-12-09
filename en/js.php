@@ -304,7 +304,7 @@ jQuery(function(){
 
 
 var options, a;
-var onSelect = function(val, data) { $('#qualificador #id').val(data); $('#qualificador'); };   
+var onSelect = function(val, data) { $('#qualificador #id').val(data); $('#qualificador').submit(); };   
 jQuery(function(){
 
 	function formatItem(row) {
@@ -346,7 +346,7 @@ jQuery(function(){
 
 
 var options, a;
-var onSelect = function(val, data) { $('#genero #id').val(data); $('#genero'); };   
+var onSelect = function(val, data) { $('#genero #id').val(data); $('#genero').submit(); };   
 jQuery(function(){
 
 	function formatItem(row) {
@@ -388,7 +388,7 @@ jQuery(function(){
 
 
 var options, a;
-var onSelect = function(val, data) { $('#geografico #id').val(data); $('#geografico'); };   
+var onSelect = function(val, data) { $('#geografico #id').val(data); $('#geografico').submit(); };   
 jQuery(function(){
 
 	function formatItem(row) {

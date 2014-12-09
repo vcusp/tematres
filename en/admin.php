@@ -8,19 +8,116 @@
 #
 include("config.tematres.php");
 $metadata=do_meta_tag();
- /*
-term reporter
-*/
-if(($_GET[mod]=='csv') && (substr($_GET[task],0,3)=='csv') && ($_SESSION[$_SESSION["CFGURL"]][ssuser_id]))  
-{
-	return wichReport($_GET[task]);
-}
 
-$search_string ='';
-$search_string = (doValue($_GET,FORM_LABEL_buscar)) ? XSSprevent(doValue($_GET,FORM_LABEL_buscar)) : '';
+if($_SESSION[$_SESSION["CFGURL"]]["ssuser_nivel"]!=='1'){
+	header("Location:login.php");
+	};
+
+//Acciones de gestion de usuarios
+if($_POST["boton"]==LABEL_Enviar){
+	$user_id=admin_users("alta");
+	header("Location:admin.php?user_id=list");if($_SESSION[$_SESSION["CFGURL"]]["ssuser_nivel"]!=='1'){
+	header("Location:login.php");
+	};
+
+//Acciones de gestion de usuarios
+if($_POST["boton"]==LABEL_Enviar){
+	$user_id=admin_users("alta");
+	header("Location:admin.php?user_id=list");
+	}
+
+if($_POST["useactua"]){
+	$user_id=admin_users("actua",$_POST["useactua"]);
+	header("Location:admin.php?user_id=list");
+	}
+
+if($_GET["usestado"]){
+	$user_id=admin_users("estado",$_GET["usestado"]);
+	header("Location:admin.php?user_id=list");
+	}
+
+if(($_POST["boton_config"])&&(is_numeric($_POST["vocabulario_id"]))){
+	abm_vocabulario("M",$_POST["vocabulario_id"]);
+	header("Location:admin.php?vocabulario_id=list");
+	};
+
+if(($_POST["boton_config"])&&($_POST["vocabulario_id"]=='NEW')){
+	abm_vocabulario("A");
+	header("Location:admin.php?vocabulario_id=list");
+	};
+
+
+if(($_POST["doAdmin"]=='addTargetVocabulary')){
+	abm_targetVocabulary("A");
+	};
+
+if(($_POST["doAdmin"]=='saveTargetVocabulary')){
+	abm_targetVocabulary("M",$_POST["tvocab_id"]);
+	};
+
+if(($_POST["doAdmin"]=='saveUserTypeNote')){
+	abm_UserTypeNote("M",$_POST["tvocab_id"]);
+	};
+
+if(($_POST["doAdmin"]=='massrem')){
+	REMmassiveData($_POST);
+	header("Location:index.php");
+	};
+
+if(($_POST["doAdmin"]=='updateEndpointNow')){
+	doSparqlEndpoint($_POST);
+	header("Location:sparql.php");
+	};
+	}
+
+if($_POST["useactua"]){
+	$user_id=admin_users("actua",$_POST["useactua"]);
+	header("Location:admin.php?user_id=list");
+	}
+
+if($_GET["usestado"]){
+	$user_id=admin_users("estado",$_GET["usestado"]);
+	header("Location:admin.php?user_id=list");
+	}
+
+if(($_POST["boton_config"])&&(is_numeric($_POST["vocabulario_id"]))){
+	abm_vocabulario("M",$_POST["vocabulario_id"]);
+	header("Location:admin.php?vocabulario_id=list");
+	};
+
+if(($_POST["boton_config"])&&($_POST["vocabulario_id"]=='NEW')){
+	abm_vocabulario("A");
+	header("Location:admin.php?vocabulario_id=list");
+	};
+
+
+if(($_POST["doAdmin"]=='addTargetVocabulary')){
+	abm_targetVocabulary("A");
+	};
+
+if(($_POST["doAdmin"]=='saveTargetVocabulary')){
+	abm_targetVocabulary("M",$_POST["tvocab_id"]);
+	};
+
+if(($_POST["doAdmin"]=='saveUserTypeNote')){
+	abm_UserTypeNote("M",$_POST["tvocab_id"]);
+	};
+
+if(($_POST["doAdmin"]=='massrem')){
+	REMmassiveData($_POST);
+	header("Location:index.php");
+	};
+
+if(($_POST["doAdmin"]=='updateEndpointNow')){
+	doSparqlEndpoint($_POST);
+	header("Location:sparql.php");
+	};
+
 ?>
-<!DOCTYPE html>
-<html lang="<?php echo LANG;?>">
+<!DOCTYPE html
+PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo LANG;?>">
 
 <head>
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -36,7 +133,6 @@ $search_string = (doValue($_GET,FORM_LABEL_buscar)) ? XSSprevent(doValue($_GET,F
 	<script type="text/javascript" src="<?php echo T3_WEBPATH;?>jq/tree.jquery.js"></script>
 	
 	<link rel="stylesheet" type="text/css" href="<?php echo T3_WEBPATH;?>css/jquery.autocomplete.css" />
-	<link rel="stylesheet" type="text/css" href="<?php echo T3_WEBPATH;?>css/jqtree.css" />
         
 	<!-- Bootstrap CSS -->
 	<link rel="stylesheet" href="<?php echo T3_WEBPATH;?>bootstrap/css/vcusp-theme.css">

@@ -19,5 +19,5 @@
  *      Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
  *      MA 02110-1301, USA.
  */
-		header("Location:vocab/index.php");
+		header("Location:pt-br/index.php");
 ?>
