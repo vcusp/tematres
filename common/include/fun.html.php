@@ -541,13 +541,12 @@ $body.='<div class="panel-body">';
 $body.='<a target="_blank" href="http://200.144.190.234/F/?func=scan&scan_code=SUB&scan_start='.$array[titTema].'">Pesquisar no Catálogo DEDALUS</a><br/>';
 $body.='<a target="_blank" href="http://www.producao.usp.br/browse?type=subject&value='.$array[titTema].'">Pesquisar na Biblioteca Digital da Produção Intelectual</a><br/>';
 $body.='<a target="_blank" href="http://www.teses.usp.br/index.php?option=com_jumi&fileid=19&Itemid=87&lang=pt-br&g=1&c0=p&o0=AND&b0='.$array[titTema].'">Pesquisar na Biblioteca Digital de Teses e Dissertações</a><br/>';
-$body.='<a target="_blank" href="http://www.bv.fapesp.br/pt/pesquisa/?q='.$array[titTema].'">Pesquisar na Biblioteca Virtual da FAPESP</a>';
 $body.='</div>';
 $body.='<div class="panel-heading">';
 $body.='<h3 class="panel-title">Pesquisar termo em outras bibliotecas virtuais</h3>';
 $body.='</div>';
 $body.='<div class="panel-body">';
-$body.='<a target="_blank" href="http://www.bv.fapesp.br/pt/pesquisa/?q='.$array[titTema].'">Pesquisar na Biblioteca Virtual da FAPESP</a>';
+$body.='<a target="_blank" href="http://www.bv.fapesp.br/pt/metapesquisa/?q='.$array[titTema].'">Pesquisar na Biblioteca Virtual da FAPESP</a>';
 $body.='</div>';
 
 $body.='<div class="panel-heading">';
